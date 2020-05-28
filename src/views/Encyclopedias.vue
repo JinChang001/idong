@@ -5,6 +5,7 @@
     <!-- 顶部导航开始 -->
     <mt-header title="" fixed>
         <div slot="left" class="shortcut">
+          123123
            百科
         </div>
     </mt-header>
