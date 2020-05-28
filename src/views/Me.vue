@@ -7,7 +7,7 @@
     <!-- 用户头像结束 -->
     <!-- 登录/注册开始 -->
     <div class="lagin">
-      <mt-button type="primary" class="button">登录111</mt-button> 
+      <mt-button type="primary" class="button">登录</mt-button> 
       <mt-button type="primary" class="button">注册</mt-button>
     </div>
     <!-- 登录，注册结束 -->

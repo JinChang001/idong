@@ -4,7 +4,7 @@
     <mt-tab-item id="index">
       <mt-header fixed>
       <router-link slot="left" to="/" disabled>
-        <mt-button type="primary">首页111</mt-button>
+        <mt-button type="primary">首页</mt-button>
       </router-link>
       <router-link slot="right" to="/" disabled>
         <img src="" alt="">
