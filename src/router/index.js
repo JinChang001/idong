@@ -25,7 +25,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "encyclopedias" */ '../views/Encyclopedias.vue')
   },
   {
-    path:'sport',
+    path:'/sport',
     component: () => import(/* webpackChunkName: "sport" */ '../views/Sport.vue')
   }
 ]

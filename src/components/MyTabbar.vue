@@ -21,11 +21,13 @@
           <img src="../assets\images\encyImg/release_enabled.png" v-if="selectedTab == 'release'">
           <img src="../assets\images\encyImg/release_disabled.png"  v-else>
         </router-link>
-      </mt-tab-item>d
+      </mt-tab-item>
       <mt-tab-item id="lightning">
-        <img src="../assets\images\encyImg/lightning_enabled.png" slot="icon"  v-if="selectedTab == 'lightning'">
-        <img src="../assets\images\encyImg/lightning_disabled.png" slot="icon" v-else>
-        运动
+          <img src="../assets\images\encyImg/lightning_enabled.png" slot="icon"  v-if="selectedTab == 'lightning'">
+          <img src="../assets\images\encyImg/lightning_disabled.png" slot="icon" v-else>
+        <router-link to="/sport">
+          运动
+        </router-link>
       </mt-tab-item>
       <mt-tab-item id="me">
         <img src="../assets\images\encyImg/me_enabled.png" slot="icon"  v-if="selectedTab == 'me'">
