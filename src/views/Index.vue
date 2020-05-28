@@ -11,7 +11,9 @@
       </router-link>
     </mt-header>
     <div class="main">
-      
+      <div>
+        ahahahah
+      </div>
     </div>
     </mt-tab-item>
   </div>
