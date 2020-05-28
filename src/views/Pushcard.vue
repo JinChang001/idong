@@ -15,7 +15,7 @@
   <!-- 底部的× -->
   <div class="aa">
      <router-link to="/">
-       <p>×</p>
+       <p>×1111</p>
      </router-link>
   </div>
 
