@@ -13,7 +13,7 @@
 
     <!-- details -->
     <div class="details">
-      <div class="details-index">我的课程库</div>
+      <div class="details-index">我的课程库11111</div>
       <span class="add">十</span>
     </div>
     <!-- 详情页开始模块 -->
