@@ -5,6 +5,7 @@
       <span class="index-title-content">首页</span>
     </div>
     <!-- 顶部标题结束 -->
+    <div>123</div>
     <!-- 顶部选项卡开始 -->
     <mt-navbar class="navbar" v-model="active">
       <mt-tab-item id="1">运动圈</mt-tab-item>
