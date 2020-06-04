@@ -11,12 +11,14 @@ import MyTabbar from './components/MyTabbar'
 import VantUI from "vant";
 import "vant/lib/index.css";
 Vue.use(VantUI);
+//通过Vue.use()方法使用MintUI插件
+Vue.use(MintUI);
 
 axios.defaults.baseURL = 'http://127.0.0.1'
 Vue.prototype.axios = axios;
+Vue.prototype.qs = qs;
 Vue.config.productionTip = false
-//通过Vue.use()方法使用MintUI插件
-Vue.use(MintUI);
+
 
 // 全局底部导航
 Vue.component("my-tabbar",MyTabbar);

@@ -15,7 +15,7 @@
     <ul class="shop">
       <router-link to="">
         <li>
-          <img src="../../public/img/icon/kechengguanli.png">
+        <img src="../../public/img/icon/kechengguanli.png">
           <P>我的课程</P>
         </li>
       </router-link>   
@@ -41,37 +41,37 @@
     <!-- 横向功能区域结束 -->
     <!-- 功能列表开始 -->
     <div class="cell">
+      <mt-cell title="饮食推荐" isLink to="/eat" >
+        <img src="../../public/img/icon/foot.png"  slot="icon">
+      </mt-cell>
       <mt-cell title="我的收藏" isLink to="">
         <img src="../../public/img/icon/sc.png"  slot="icon">
       </mt-cell>
       <mt-cell title="个人信息" isLink to="">
         <img src="../../public/img/icon/person.png"  slot="icon">
       </mt-cell>
-      <mt-cell title="饮食指南" isLink to="" >
-        <img src="../../public/img/icon/foot.png"  slot="icon">
-      </mt-cell>
     </div>
     <!-- 功能列表结束 -->
   </div>
 </template>
 <style  scoped>
-
   *{margin:0;padding:0}
   .me{
-    position: relative;
+    position:relative;
   }
   /* 用户头像 */
   .me .me-img>img{
     position:absolute;
     top:70px;
-    left:160px;
+    left:36%;
     height:100px;
   }
   /* 登录与注册 */
   .me .lagin{
     position:absolute;
+    display:block;
     top:180px;
-    left:130px;
+    left:28%;
     margin-right:20px;
   }
   /* 登录与注册按钮 */
@@ -85,28 +85,30 @@
   .shop{
     position: relative;
     display: flex;
-    width:367px;
-    top:260px;
-    left:18px;
-    text-align: center;
-    
+    width:100%;
+    top:225px;
+    margin:0 auto;
+    padding-bottom:31px;
+    padding-top:10px;
+    text-align:center;
+    background-color:#e8e8e8;
     
   }
   .shop li{
-    margin:0 15px;
-    font-size:16px;
+    margin:0 10px;
+    font-size:8px;
+    margin-left: 35px;
     font-weight:700; 
   }
   .shop li img{
     height: 40px;
-    margin: 20px 0px;
+    margin: 10px 0px;
   }
   /* cell功能列表样式 */
   .me>.cell{
     display:block;
-    margin-top:330px;
+    margin-top:245px;
   }
- 
 </style>
 
 

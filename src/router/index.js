@@ -16,6 +16,10 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "pushcard" */ '../views/Pushcard.vue')
   },
   {
+    path:'/eat',
+    component: () => import(/* webpackChunkName: "pushcard" */ '../views/Eat.vue')
+  },
+  {
     path:'/me',
     component: () => import(/* webpackChunkName: "me" */ '../views/Me.vue')
   }

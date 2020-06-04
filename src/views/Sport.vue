@@ -23,7 +23,7 @@
       </mt-cell>
     </div>
     <div class="content">
-      <mt-cell title="我学过的课程" label="9个视频" isLink>
+      <mt-cell title="我参加的课程" label="3个视频" isLink>
         <img class="content-img" src="../../src/assets/images/sport/12.jpg" slot="icon" />
       </mt-cell>
     </div>
@@ -31,43 +31,66 @@
     <!-- 推荐计划开始 -->
     <mt-cell class="module" title="推荐计划" isLink></mt-cell>
     <!-- 推荐计划结束 -->
+
     <!-- 轮播图片 -->
     <div class="swipe">
       <mt-swipe @change="handleChange" :show-indicators="false">
-        <mt-swipe-item>导航一</mt-swipe-item>
-        <mt-swipe-item>导航二</mt-swipe-item>
-        <mt-swipe-item>导航三</mt-swipe-item>
+        <mt-swipe-item>
+          <img style="width:100%;height:100%;" src="../../src/assets/images/sport/b.jpg" alt="">
+          <p class="carousel-title">个性减脂计划</p>
+          <p class="carousel-title">8周·每周5天·每天10~20分钟</p>
+        </mt-swipe-item>
+        <mt-swipe-item>
+         <img style="width:100%;height:100%;" src="../../src/assets/images/sport/c.jpg" alt="">
+        </mt-swipe-item>
+        <mt-swipe-item>
+        <img style="width:100%;height:100%;" src="../../src/assets/images/sport/d.jpg" alt="">
+        </mt-swipe-item>
       </mt-swipe>
     </div>
     <!-- 轮播图片结束 -->
+
     <!-- 动作训练开始 -->
     <mt-cell title="动作训练" isLink></mt-cell>
     <!-- 动作训练结束 -->
+
     <!-- 轮播图片 -->
     <div class="swipe2">
-      <div class="swipe-module"></div>
-      <div class="swipe-module"></div>
-      <div class="swipe-module"></div>
+      <div class="swipe-module">
+        <img class="content-img1" src="../../src/assets/images/sport/12.jpg" slot="icon" />
+      </div>
+      <div class="swipe-module">
+        <img class="content-img1" src="../../src/assets/images/sport/12.jpg" slot="icon" />
+      </div>
+      <div class="swipe-module">
+        <img class="content-img1" src="../../src/assets/images/sport/12.jpg" slot="icon" />
+      </div>
     </div>
     <!-- 轮播图片结束 -->
+
     <!-- 底部导航栏开始 -->
-     <!-- <mt-tabbar  v-model="navBottom" fixed>
-       <mt-tab-item id="d1">首页
-         <img src="../../src/assets/images/sport/shouye.png" slot="icon">
-       </mt-tab-item>
-       <mt-tab-item id="d2">计划
-         <img src="../../src/assets/images/sport/jihua.png" slot="icon">
-       </mt-tab-item>
-       <mt-tab-item id="d3">运动
-         <img src="../../src/assets/images/sport/shandian.png" slot="icon">
-       </mt-tab-item>
-       <mt-tab-item id="d4">商城
-         <img src="../../src/assets/images/sport/shangcheng_1.png" slot="icon">
-       </mt-tab-item>
-       <mt-tab-item id="d5">我
-         <img src="../../src/assets/images/sport/wode.png" slot="icon">
-       </mt-tab-item>
-     </mt-tabbar> -->
+    <!-- <mt-tabbar v-model="navBottom" fixed>
+      <mt-tab-item id="d1">
+        首页
+        <img src="../../src/assets/images/shouye.png" slot="icon" />
+      </mt-tab-item>
+      <mt-tab-item id="d2">
+        计划
+        <img src="../../src/assets/images/jihua.png" slot="icon" />
+      </mt-tab-item>
+      <mt-tab-item id="d3">
+        运动
+        <img src="../../src/assets/images/shandian.png" slot="icon" />
+      </mt-tab-item>
+      <mt-tab-item id="d4">
+        商城
+        <img src="../../src/assets/images/shangcheng_1.png" slot="icon" />
+      </mt-tab-item>
+      <mt-tab-item id="d5">
+        我
+        <img src="../../src/assets/images/wode.png" slot="icon" />
+      </mt-tab-item>
+    </mt-tabbar> -->
     <!-- 底部导航栏结束 -->
   </div>
 </template>
@@ -79,9 +102,11 @@ import { Swipe, SwipeItem } from "mint-ui";
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 export default {
+  name: "Home",
   data() {
     return {
-      active: 1
+      active: 1,
+      navBottom: 1
     };
   },
   methods: {
@@ -143,29 +168,42 @@ export default {
   margin-top: 10px;
   border-radius: 5px;
 }
+.content-img1 {
+  width: 120px;
+  height: 120px;
+  /* margin-top: 10px; */
+  border-radius: 5px;
+}
 .module {
   margin-top: "18px";
   text-align: left;
   padding: 15px 10px;
 }
+/* 轮播字体颜色 */
+.carousel-title{
+  color: #ffffff;
+  text-align: center;
+}
+/* 轮播背景色 */
 .swipe {
-  width: 100%;
+  width: 95%;
   height: 200px;
   background-color: #abcdef;
-  border-radius: 8px;
 }
 .swipe2 {
+  width: 95%;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
 }
+/* 轮播图片 */
 .swipe-module {
-  width: 200px;
+  width: 190px;
   height: 120px;
   background-color: pink;
   border-radius: 8px;
-  margin-left:10px;
-  margin-bottom: 70px;
+  margin-left: 5px;
+  margin-bottom: 55px;
 }
 </style>
 
