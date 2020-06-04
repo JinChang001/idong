@@ -28,8 +28,9 @@
                     <van-sidebar-item v-for="(v,k) of ET"  :key="k" :title="v.Tname"   @click="ao"  ></van-sidebar-item>
             </van-sidebar>
           </div>  
+          <!-- 大王卡来得及埃里克 -->
+          <!-- 2020-6-4 17:39 -->
           <!-- 测试上传 -->
-          <!-- aahahwdhalkw -->
           <!-- 的空间埃里awd 无间傀儡 -->
           <!-- 面板区域开始 -->
           <div class="Ribaba">
