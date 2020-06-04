@@ -28,7 +28,7 @@
                     <van-sidebar-item v-for="(v,k) of ET"  :key="k" :title="v.Tname"   @click="ao"  ></van-sidebar-item>
             </van-sidebar>
           </div>  
-          <!-- aahahwdhalkw -->
+          <!-- 测试上传 -->
           <!-- 面板区域开始 -->
           <div class="Ribaba">
             <van-panel   class="Ri" :id="v.Tid" v-for="(v,k) of ET" :key="k" style="display:none;" data-vp >
