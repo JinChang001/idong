@@ -29,7 +29,7 @@
             </van-sidebar>
           </div>  
           <!-- aahahwdhalkw -->
-          <!-- 的空间埃里克无间傀儡 -->
+          <!-- 的空间埃里awd 无间傀儡 -->
           <!-- 面板区域开始 -->
           <div class="Ribaba">
             <van-panel   class="Ri" :id="v.Tid" v-for="(v,k) of ET" :key="k" style="display:none;" data-vp >
