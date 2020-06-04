@@ -3,21 +3,28 @@
 <!-- Encyclopedias.vue -->
   <div>
     <!-- 顶部导航开始 -->
+    <!--
     <mt-header title="" fixed>
         <div slot="left" class="shortcut">
            百科
         </div>
     </mt-header>
-
+    -->
+    <!-- <my-header></my-header> -->
     <!-- 顶部选项卡开始 -->
     <!-- <mt-navbar v-model="active">
       <mt-tab-item id="1">HTML</mt-tab-item>
       <mt-tab-item id="2">CSS</mt-tab-item>
       <mt-tab-item id="3">JavaScript</mt-tab-item>
     </mt-navbar>  -->
-    
+
+    <!-- 页面头部 -->
+    <div class="index-title">
+      <span class="index-title-content">百科</span>
+    </div>
+
     <div class="Ency_2">
-      <!-- 上方图片 -->
+      <!-- 页面上方图片 -->
       <div class="headImg">
         <img  src="../assets/images/encyImg/headImg.png" alt="" >
       </div>
@@ -78,6 +85,7 @@
     </div>
  
     <!-- 底部选项卡开始 -->
+    <!-- 封装 
     <mt-tabbar v-model="selectedTab" fixed>
       <mt-tab-item id="home">
         <img src="../assets\images\encyImg/home_enabled.png" slot="icon" v-if="selectedTab == 'home'">
@@ -106,7 +114,7 @@
         我
         </mt-tab-item>
     </mt-tabbar>    
-
+    -->
   </div>
 </template>
 <style>
@@ -115,6 +123,17 @@ html,body{
 }
 </style>
 <style scoped>
+.index-title{
+  height: 30px;
+  margin-top: 5px;
+}
+.index-title span{
+  line-height: 30px;
+  font-size: 1.3rem;
+  color: #777;
+  font-weight: normal;
+  margin-left: 10px;
+}
 .Ency_2{
   overflow: hidden;
   margin-top: 40px;
@@ -268,7 +287,7 @@ export default {
       //默认的顶部选项卡及面板
       active:'2',
       //默认的底部选项卡
-      selectedTab:'ency',
+      // selectedTab:'ency',
       encyActive:'1',
       encyPanel:'1',
       ET:[

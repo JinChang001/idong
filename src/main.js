@@ -7,6 +7,7 @@ import qs from 'qs'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.min.css'
 import MyTabbar from './components/MyTabbar'
+import MyHeader from './components/MyHeader'
 //导入Vant
 import VantUI from "vant";
 import "vant/lib/index.css";
@@ -19,6 +20,8 @@ Vue.prototype.axios = axios;
 Vue.prototype.qs = qs;
 Vue.config.productionTip = false
 
+//全局顶部
+Vue.component("my-header",MyHeader);
 
 // 全局底部导航
 Vue.component("my-tabbar",MyTabbar);
