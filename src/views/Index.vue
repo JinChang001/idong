@@ -1,9 +1,6 @@
 <template>
   <div>
     <!-- 顶部标题开始 -->
-    <!-- <div class="index-title">
-      <span class="index-title-content">首页</span>
-    </div> -->
     <my-header></my-header>
     <!-- 顶部标题结束 -->
     

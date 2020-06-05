@@ -1,8 +1,9 @@
 <template>
   <div class="home">
-    <!-- 标题 -->
-    <!-- <mt-cell title="运动" class="title1"></mt-cell> -->
+    <!-- 顶部标题开始 -->
     <my-header></my-header>
+    <!-- 顶部标题结束 -->
+
     <!-- 导航栏 -->
     <mt-navbar class="navbar" v-model="active">
       <mt-tab-item id="1">活动</mt-tab-item>
@@ -69,39 +70,11 @@
     </div>
     <!-- 轮播图片结束 -->
 
-    <!-- 底部导航栏开始 -->
-    <!-- <mt-tabbar v-model="navBottom" fixed>
-      <mt-tab-item id="d1">
-        首页
-        <img src="../../src/assets/images/shouye.png" slot="icon" />
-      </mt-tab-item>
-      <mt-tab-item id="d2">
-        计划
-        <img src="../../src/assets/images/jihua.png" slot="icon" />
-      </mt-tab-item>
-      <mt-tab-item id="d3">
-        运动
-        <img src="../../src/assets/images/shandian.png" slot="icon" />
-      </mt-tab-item>
-      <mt-tab-item id="d4">
-        商城
-        <img src="../../src/assets/images/shangcheng_1.png" slot="icon" />
-      </mt-tab-item>
-      <mt-tab-item id="d5">
-        我
-        <img src="../../src/assets/images/wode.png" slot="icon" />
-      </mt-tab-item>
-    </mt-tabbar> -->
-    <!-- 底部导航栏结束 -->
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import { Swipe, SwipeItem } from "mint-ui";
 
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
 export default {
   name: "Home",
   data() {

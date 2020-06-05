@@ -1,5 +1,6 @@
 <template>
     <div class="index-title">
+      <!-- 直接从路由中获取name属性 -->
       <span class="index-title-content">{{$router.currentRoute.name}}</span>
     </div>
 </template>
@@ -24,10 +25,7 @@ export default {
     }
   },
   methods:{
-    show(){
-      console.log(this.$router.currentRoute.name);
-    }
+    
   }
-
 }
 </script>
