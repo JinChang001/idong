@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 // 首页
 import Index from '../views/Index'
 
+
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -27,6 +29,10 @@ Vue.use(VueRouter)
   {
     path:'/encyclopedias',
     component: () => import(/* webpackChunkName: "encyclopedias" */ '../views/Encyclopedias.vue')
+  },
+  {
+    path:'/encyArticle',
+    component: () => import(/* webpackChunkName: "encyArticle/:id" */ '../components/EncyArticle.vue')
   },
   {
     path:'/sport',

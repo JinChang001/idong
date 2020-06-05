@@ -2,22 +2,6 @@
 <template>
 <!-- Encyclopedias.vue -->
   <div>
-    <!-- 顶部导航开始 -->
-    <!--
-    <mt-header title="" fixed>
-        <div slot="left" class="shortcut">
-           百科
-        </div>
-    </mt-header>
-    -->
-    <!-- <my-header></my-header> -->
-    <!-- 顶部选项卡开始 -->
-    <!-- <mt-navbar v-model="active">
-      <mt-tab-item id="1">HTML</mt-tab-item>
-      <mt-tab-item id="2">CSS</mt-tab-item>
-      <mt-tab-item id="3">JavaScript</mt-tab-item>
-    </mt-navbar>  -->
-
     <!-- 页面头部 -->
     <div class="index-title">
       <span class="index-title-content">百科</span>
@@ -59,7 +43,7 @@
                               </div>
                             </a>
                         </div> -->
-                        <mt-cell  class="articleItem " is-link to="" v-for="(v,k) of 10" :key="k">
+                        <mt-cell  class="articleItem " is-link to="/EncyArticle" v-for="(v,k) of 10" :key="k">
                             
                             <div>
                                 <p class="linkTitle">瘦腿</p>
@@ -70,11 +54,6 @@
                             <img src="../assets\images\encyImg/test02.jpg" slot="icon" width="50" height="50" >
                         </mt-cell>
                       </div>
-
-                        
-                        
-                      
-                        
                       <!-- 文章图文信息结束 -->
                   <!-- 面板文章信息结束 -->
             </van-panel>
@@ -83,7 +62,6 @@
           
       </div>
     </div>
- 
     <!-- 底部选项卡开始 -->
     <!-- 封装 
     <mt-tabbar v-model="selectedTab" fixed>
@@ -124,19 +102,25 @@ html,body{
 </style>
 <style scoped>
 .index-title{
+  
   height: 30px;
   margin-top: 5px;
+  
 }
 .index-title span{
+  width: 100%;
   line-height: 30px;
   font-size: 1.3rem;
   color: #777;
   font-weight: normal;
   margin-left: 10px;
+  position: fixed;
+  background-color: #fff;
+  z-index: 1000;
 }
 .Ency_2{
   overflow: hidden;
-  margin-top: 40px;
+  margin-top: 0px;
   /* display: flex; */
 }
 .shortcut{
@@ -158,7 +142,6 @@ html,body{
   padding-bottom: 5px;
   /* background: url('../assets/images/encyImg/test.jpg'); */
   /* background-attachment: fixed; */
-  
 }
 .headImg>img{
   width: 95%;
@@ -189,8 +172,6 @@ html,body{
     /* position: fixed; */
     font-size: 16px;
     text-align: center;
-    
-    
 }
 
 .Ri>div{
@@ -220,21 +201,6 @@ html,body{
 .encyLinkbaba{
   padding-top: 27px;
 }
-/* .encyLink{
-  padding-top: 10px;
-  display: flex;
-  align-items: center;
-  
-}
-.encyLink>a>img{
-  width: 17%;
-  margin-right: 5px;
-}
-.encyLink>a>div{
-  width: 75%;
-  float: right;
-  margin-right: 5px;
-} */
 .linkTitle{
   font-size: 16px;
   margin-bottom: 5px;
