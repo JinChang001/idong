@@ -1,11 +1,11 @@
 <template>
     <div class="index-title">
-      <span class="index-title-content">{{n}}</span>
+      <span class="index-title-content">{{$router.currentRoute.name}}</span>
     </div>
 </template>
 <style scoped>
 .index-title{
-  height: 30px;
+  height: 40px;
   margin-top: 5px;
 }
 .index-title span{
@@ -16,3 +16,18 @@
   margin-left: 10px;
 }
 </style>
+<script>
+export default {
+  data(){
+    return {
+
+    }
+  },
+  methods:{
+    show(){
+      console.log(this.$router.currentRoute.name);
+    }
+  }
+
+}
+</script>

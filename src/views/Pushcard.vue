@@ -1,5 +1,8 @@
 <template>
   <div class="abc">
+    <!-- 顶部开始 -->
+    <my-header></my-header>
+    <!-- 顶部结束 -->
     <!-- 按钮组 -->
     <div>
       <ul class="mian">

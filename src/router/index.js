@@ -10,11 +10,12 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: 'Index',
+    name: '首页',
     component: Index
   },
   {
     path:'/pushcard',
+    name:'发布动态',
     component: () => import(/* webpackChunkName: "pushcard" */ '../views/Pushcard.vue')
   },
   {
@@ -23,11 +24,13 @@ Vue.use(VueRouter)
   },
   {
     path:'/me',
+    name:'我的',
     component: () => import(/* webpackChunkName: "me" */ '../views/Me.vue')
   }
   ,
   {
     path:'/encyclopedias',
+    name:'百科',
     component: () => import(/* webpackChunkName: "encyclopedias" */ '../views/Encyclopedias.vue')
   },
   {
@@ -36,6 +39,7 @@ Vue.use(VueRouter)
   },
   {
     path:'/sport',
+    name:'运动',
     component: () => import(/* webpackChunkName: "sport" */ '../views/Sport.vue')
   }
 ]

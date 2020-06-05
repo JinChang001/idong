@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <!-- 标题 -->
-    <mt-cell title="运动" class="title1"></mt-cell>
+    <!-- <mt-cell title="运动" class="title1"></mt-cell> -->
+    <my-header></my-header>
     <!-- 导航栏 -->
     <mt-navbar class="navbar" v-model="active">
       <mt-tab-item id="1">活动</mt-tab-item>

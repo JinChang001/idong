@@ -1,9 +1,10 @@
 <template>
   <div>
     <!-- 顶部标题开始 -->
-    <div class="index-title">
+    <!-- <div class="index-title">
       <span class="index-title-content">首页</span>
-    </div>
+    </div> -->
+    <my-header></my-header>
     <!-- 顶部标题结束 -->
     
     <!-- 顶部选项卡开始 -->
@@ -88,6 +89,9 @@
   </div>
 </template>
 <style scoped>
+.navbar{
+  margin-top: -15px;
+}
 /* 顶部标题样式开始 */
 .index-title{
   height: 30px;
