@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 顶部标题开始 -->
-    <my-header></my-header>
+    <my-header name="首页"></my-header>
     <!-- 顶部标题结束 -->
     
     <!-- 顶部选项卡开始 -->
@@ -12,7 +12,7 @@
     <!-- 顶部选项卡结束 -->
     <!-- 面板区域开始 -->
     <div class="main">
-      <mt-tab-container v-model="active" swipeable>
+      <mt-tab-container v-model="active">
         <mt-tab-container-item id="1">
           <!-- 轮播图开始 -->
           <mt-swipe class="main-lunbo">

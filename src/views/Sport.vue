@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- 顶部标题开始 -->
-    <my-header></my-header>
+    <my-header name='运动'></my-header>
     <!-- 顶部标题结束 -->
 
     <!-- 导航栏 -->

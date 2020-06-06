@@ -1,7 +1,8 @@
 <template>
   <div class="abc">
     <!-- 顶部开始 -->
-    <my-header></my-header>
+    <my-header name='发布动态'></my-header>
+
     <!-- 顶部结束 -->
     <!-- 按钮组 -->
     <div>

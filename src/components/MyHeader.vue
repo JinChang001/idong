@@ -1,7 +1,8 @@
 <template>
     <div class="index-title">
-      <!-- 直接从路由中获取name属性 -->
-      <span class="index-title-content">{{$router.currentRoute.name}}</span>
+      <!-- 直接从props中获取name属性 -->
+      <span class="index-title-content">{{name}}</span>
+      
     </div>
 </template>
 <style scoped>
@@ -19,13 +20,6 @@
 </style>
 <script>
 export default {
-  data(){
-    return {
-
-    }
-  },
-  methods:{
-    
-  }
+  // props:['name']
 }
 </script>

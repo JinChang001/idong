@@ -3,9 +3,8 @@
 <!-- Encyclopedias.vue -->
   <div>
     <!-- 页面头部开始 -->
-    <my-header></my-header>
+    <my-header name='百科'></my-header>
     <!-- 页面头部结束 -->
-    
     <div class="Ency_2">
       <!-- 页面上方图片 -->
       <div class="headImg">
