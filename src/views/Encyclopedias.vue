@@ -39,7 +39,7 @@
                         </div>
                       </a>
                   </div> -->
-                  <mt-cell  class="articleItem " is-link to="/EncyArticle" v-for="(article,index) of articles" :key="index">
+                  <mt-cell  class="articleItem " is-link :to="`/EncyArticle/${article.article_id}`" v-for="(article,index) of articles" :key="index">
                       
                       <div>
                           <p class="linkTitle">{{article.article_title}}</p>
@@ -263,25 +263,25 @@ export default {
       busy:false,
       //存储服务器返回的总页数
       pagecount:'',
-      ET:[
-            {Tid:"1",Tname:"关注"},
-            {Tid:"2",Tname:"推荐"},
-            {Tid:"3",Tname:"饮食"},
-            {Tid:"4",Tname:"减肥"},
-            {Tid:"5",Tname:"增肌"},
-            {Tid:"6",Tname:"增肌"},
-            {Tid:"7",Tname:"增腿"},
-            {Tid:"8",Tname:"增腿"},
-            {Tid:"9",Tname:"增发"},
-            {Tid:"10",Tname:"增发"}
-        ],
+      // ET:[
+      //       {Tid:"1",Tname:"关注"},
+      //       {Tid:"2",Tname:"推荐"},
+      //       {Tid:"3",Tname:"饮食"},
+      //       {Tid:"4",Tname:"减肥"},
+      //       {Tid:"5",Tname:"增肌"},
+      //       {Tid:"6",Tname:"增肌"},
+      //       {Tid:"7",Tname:"增腿"},
+      //       {Tid:"8",Tname:"增腿"},
+      //       {Tid:"9",Tname:"增发"},
+      //       {Tid:"10",Tname:"增发"}
+      //   ],
       
       // dp:"display:none;"
     }
   },
   
   methods:{
-    //左侧选项卡点击事件
+    //左侧选项卡不能关联面板，使用点击事件更换面板显示
     ao(e){
       // this.dp="display:none;"
       // var xxs=document.querySelectorAll("[data-vp]")
@@ -290,19 +290,19 @@ export default {
       // }
       // document.getElementById(e+1).style=""
       // console.log(document.querySelectorAll("[data-vp]"))
-      console.log(e);
+      // console.log(e);
       this.articles =[];
       var active=e+1
       this.busy = true;
       this.axios.get('/getArticles?cid=' + active + '&page=' + this.page).then((res)=>{
             
             var data = res.data.articles;
-            console.log(data)
+            // console.log(data)
             //将WEB服务器返回的总页数赋值给pagecount变量
             this.pagecount = res.data.pagecount;
 
             data.forEach((item)=>{
-              //因为xzqa_article数据表中的image字段允许为空
+              //因为ency_article数据表中的image字段允许为空
               //所以需要进行判断,如果不为空,才进行动态加载图像操作
               if(item.article_image != null){
                   item.article_image = require('../assets/images/encyImg/' + item.article_image);
@@ -330,7 +330,7 @@ export default {
             this.pagecount = res.data.pagecount;
 
             data.forEach((item)=>{
-              //因为xzqa_article数据表中的image字段允许为空
+              //因为ency_article数据表中的image字段允许为空
               //所以需要进行判断,如果不为空,才进行动态加载图像操作
               if(item.article_image != null){
                   item.article_image = require('../assets/images/encyImg/' + item.article_image);

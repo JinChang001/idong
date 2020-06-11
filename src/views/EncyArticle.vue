@@ -1,23 +1,23 @@
 <template>
     <div class="encyArticle">
         <!-- 顶部导航开始 -->
-        <mt-header title="百科详情页">
+        <mt-header title="百科详情页" fixed>
             <router-link to="/encyclopedias" slot="left">
                 <mt-button icon="back"></mt-button>
             </router-link>
         </mt-header>
         <!-- 文章区域开始 -->
-        <div>
+        <div class="main">
             <!-- 文章标题开始 -->
             <div class="encyArticle-header">
                 <div class="encyArticle-header-title">
-                    <!-- {{obj.subject}} -->
-                    这里是&lt;文章标题&gt;
+                    {{obj.article_title}}
+                    <!-- 这里是&lt;文章标题&gt; -->
                     
                 </div>
                 <div class="encyArticle-header-datetime">
-                    <!-- {{moment.unix(obj.created_at).format('Y年MM月DD日HH:mm')}} -->
-                    这里是&lt;发布日期&gt;
+                    {{moment.unix(obj.article_at).format('Y年MM月DD日HH:mm')}}
+                    <!-- 这里是&lt;发布日期&gt; -->
                 </div>
             </div>
             <!-- 文章标题结束 -->
@@ -25,7 +25,7 @@
             <div class="author-info">
                 <div class="author-info-avatar">
                     <!-- <img :src="obj.avatar" alt=""> -->
-                    头像图片
+                    头像
                 </div>
                 <div class="author-info-detail">
                     <div class="author-info-nickname">
@@ -45,13 +45,8 @@
             </div>
             <!-- 作者信息结束 -->
             <!-- 文章正文开始 -->
-            <div class="encyArticle-content" >
-                文章内容<br>
-                ...<br>
-                ...<br>
-                ...<br>
-                ...<br>
-                <!-- v-html="obj.content" -->
+            <div class="encyArticle-content" v-html="obj.article_content">
+                
             </div>
             <!-- 文章正文结束 -->
         </div>
@@ -61,6 +56,10 @@
     </div>
 </template>
 <style scoped>
+.main{
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
 .encyArticle{
     height:100vh;
 }
@@ -128,11 +127,13 @@ export default {
   mounted(){
       //请求WEB服务器中以当前地址栏ID为条件的文章标题、正文及相关信息
       var id = this.$route.params.id;
+    //   console.log(id)
       //发送AJAX请求
       this.axios.get('/encyArticle?id=' + id).then((res)=>{
         this.obj = res.data.encyArticle;
-        this.obj.avatar = require('../assets/images/encyImg/' + this.obj.avatar);
+        // this.obj.avatar = require('../assets/images/encyImg/' + this.obj.avatar);
       });
+    //   console.log(this.obj)
   }
 }
 </script>
