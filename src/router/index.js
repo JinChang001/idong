@@ -39,8 +39,8 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "encyclopedias" */ '../views/Encyclopedias.vue')
   },
   {
-    path:'/encyArticle',
-    component: () => import(/* webpackChunkName: "encyArticle/:id" */ '../components/EncyArticle.vue')
+    path:'/encyArticle/:id',
+    component: () => import(/* webpackChunkName: "encyArticle/:id" */ '../views/EncyArticle.vue')
   },
   {
     path:'/sport',
