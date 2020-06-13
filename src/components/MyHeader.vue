@@ -1,8 +1,7 @@
 <template>
     <div class="index-title">
       <!-- 直接从props中获取name属性 -->
-      <span class="index-title-content">{{name}}</span>
-      
+      <span class="index-title-content">{{name}}</span>    
     </div>
 </template>
 <style scoped>
@@ -20,6 +19,6 @@
 </style>
 <script>
 export default {
-  // props:['name']
+  props:['name']
 }
 </script>

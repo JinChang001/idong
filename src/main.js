@@ -18,8 +18,7 @@ Vue.use(MintUI);
 axios.defaults.baseURL = 'http://127.0.0.1'
 Vue.prototype.axios = axios;
 Vue.prototype.qs = qs;
-Vue.config.productionTip = false
-
+Vue.config.productionTip = false;
 //全局顶部
 Vue.component("my-header",MyHeader);
 

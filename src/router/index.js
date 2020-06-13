@@ -14,6 +14,11 @@ Vue.use(VueRouter)
     component: Index
   },
   {
+    path:'/pdetails',
+    name:'pdetails',
+    component: () => import(/* webpackChunkName: "pushcard" */ '../views/Pdetails.vue')
+  },
+  {
     path:'/pushcard',
     name:'pushcard',
     component: () => import(/* webpackChunkName: "pushcard" */ '../views/Pushcard.vue')

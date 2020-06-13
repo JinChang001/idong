@@ -1,3 +1,65 @@
+<style scoped>
+.navbar{
+  margin-top: -15px;
+}
+.main{
+  margin-bottom: 55px;
+}
+.main-lunbo{
+  width: 95%;
+  height: 160px;
+  margin: 5px auto;
+}
+.main-lunbo img{
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+}
+
+/* 动态图片结束 */
+
+.user-info {
+  padding: 10px;
+}
+.user-info>img{
+  height:40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.user-info>span {
+  margin-left:10px;
+}
+.btn-follow{
+  float: right;
+}
+.user-text{
+  padding: 0px 10px;
+  letter-spacing: 2px;
+}
+.user-imgs {
+  padding: 5px;
+}
+.user-imgs img {
+  width: 33.3333333%;
+  height: 100px;
+  padding: 5px;
+  box-sizing:border-box;
+}
+.user-icons>li{
+  width: 33%;
+  line-height: 40px;
+  border-bottom: 1px solid #eee;
+  box-sizing:border-box;
+  float: left;
+  text-align: center;
+}
+.user-icons>li>img {
+  width: 20px;
+  height: 20px;
+  padding-bottom: 8px;
+}
+
+</style>
 <template>
   <div>
     <!-- 顶部标题开始 -->
@@ -33,45 +95,51 @@
             <div class="ydq-title">运动圈</div>
             <!-- 运动圈标题结束 -->
             <!-- 用户动态开始 -->
-            <ul class="ydq-items">
-              <!-- 一条用户动态开始 -->
-              <li class="ydq-item"  v-for="(v,k) in 10" :key="k">
-                <!-- 用户信息开始 -->
-                <router-link to="/">
-                  <div class="author-info">
-                      <div class="author-info-avatar">
-                          <img src="../assets/images/index/avatar/01beb05dd34dfea8012129e23e4dc8.jpg" alt="">
-                      </div>
-                      <div class="author-info-detail">
-                          <div class="author-info-nickname">爱吃猫的鱼</div>
-                      </div>
+            <ul class="moments-list">
+              <li>
+                <div class="user-info">
+                  <img src="../assets/images/index/avatar/b86fd6fe4ac391ef9640f708126be782.jpg" alt="">
+                  <span>靳昌</span>
+                  <div class="btn-follow" @click="onFollowed">
+                    <mt-button type="primary" size="small" v-if="isFollowed">关注</mt-button>
+                    <mt-button type="default" size="small" v-else>取消关注</mt-button>
                   </div>
-                </router-link>
-                <!-- 用户信息结束 -->
-                <!-- 用户动态信息开始 -->
-                <router-link to="/">
-                  <!-- 动态的文本信息 -->
-                  <div class="ydq-item-text">
-                    关于空腹跑🏃‍♀️
-这三个月的跑步我基本都是早上空腹跑，减脂效果对我来说真的很明显，和大家分享下小经验。😳
-
-空腹跑为什么减脂效果比较好，因为空腹时体内血糖含量较低，跑步动用的脂肪供能的比例增大，从而可以消耗更多的脂肪。所以减脂可以选择空腹跑。✅
-
-但是空腹跑并不是适合所有人
-❎有低血糖的人不建议空腹跑
-❎没有运动基础的也不建议空腹跑
-❎上年纪的人不建议空腹跑哦
-                  </div>
-                  <!-- 动态图片 -->
-                  <div class="ydq-item-img">
-                    <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                  </div>
-                  <!-- 动态的点赞和留言 -->
-                  <div class="ydq-item-opt"></div>
-                </router-link>
-                <!-- 用户动态信息结束 -->
+                </div>
+                <div class="user-text" @click="pagePath('pdetails',queryData)">
+                  关于空腹跑🏃‍♀️
+                  这三个月的跑步我基本都是早上空腹跑，减脂效果对我来说真的很明显，和大家分享下小经验。😳
+                  空腹跑为什么减脂效果比较好，因为空腹时体内血糖含量较低，跑步动用的脂肪供能的比例增大，从而可以消耗更多的脂肪。所以减脂可以选择空腹跑。✅
+                  但是空腹跑并不是适合所有人
+                  ❎有低血糖的人不建议空腹跑
+                  ❎没有运动基础的也不建议空腹跑
+                  ❎上年纪的人不建议空腹跑哦
+                </div>
+                <div class="user-imgs" @click="pagePath('pdetails',queryData)">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                </div>
+                <ul class="user-icons">
+                  <li>
+                    <img src="../assets/images/index/icons/like.png" alt="">
+                    <span>123</span>
+                  </li>
+                  <li @click="pagePath('pdetails',queryData)">
+                    <img src="../assets/images/index/icons/review.png" alt="">
+                    <span>123</span>
+                  </li>
+                  <li @click="onCollect">
+                    <img id="collectImg" src="../assets/images/index/icons/collect.png" alt="" v-if="isCollected == 0">
+                    <img id="collectImg" src="../assets/images/index/icons/collected.png" alt="" v-else-if="isCollected == 1">
+                  </li>
+                </ul>
               </li>
-              <!-- 一条用户动态结束 -->
             </ul>
             <!-- 用户动态结束 -->
           </div>
@@ -85,82 +153,32 @@
     <!-- 面板区域结束 -->
   </div>
 </template>
-<style scoped>
-.navbar{
-  margin-top: -15px;
-}
-/* 顶部标题样式开始 */
-.index-title{
-  height: 30px;
-  margin-top: 5px;
-}
-.index-title span{
-  line-height: 30px;
-  font-size: 1.3rem;
-  color: #777;
-  font-weight: normal;
-  margin-left: 10px;
-}
-/* 顶部标题样式结束 */
-/* 顶部选项卡样式开始 */
-/* 顶部选项卡样式结束 */
-.main-lunbo{
-  width: 95%;
-  height: 160px;
-  margin: 5px auto;
-}
-.main-lunbo img{
-  width: 100%;
-  height: 150px;
-  border-radius: 5px;
-}
-/* 用户信息样式开始 */
-.author-info{
-    display: flex;
-    align-items: center;
-    background-color:#fff;
-    padding:10px;
-    box-shadow: 0 1px 3px rgba(26,26,26,.1);
-}
-.author-info-avatar{
-    margin-right:10px;
-}
-.author-info-avatar img{
-    width:40px;
-    height: 40px;
-    border-radius: 100%;
-}
-.author-info-detail{
-    font-size:14px;
-}
-.author-info-nickname{
-    margin-bottom:5px;
-}
-/* 用户信息样式结束 */
-/* 动态文本信息开始 */
-.ydq-item-text{
-  margin-top:5px;
-  padding:10px;
-  background-color:#fff;
-  line-height: 1.7;
-}
-/* 动态文本信息结束 */
-/* 动态图片开始 */
-.ydq-item-img>img{
-  width: 95%;
-  border-radius: 5px;
-}
-/* 动态图片结束 */
-</style>
 
 <script>
 export default {
   data(){
     return {
-      active:'1'
+      active:'1',
+      queryData: {
+        user_id: 1001
+      },
+      isCollected: false,
+      isFollowed: false
     }
   },
+  created() {
+    console.log(this.$route)
+  },
   methods:{
+    pagePath(url, data, type){
+      this.$router.push({name: url, [type]: data})
+    },
+    onCollect(){
+      this.isCollected == true ? this.isCollected = false : this.isCollected = true;
+    },
+    onFollowed(){
+      this.isFollowed == true ? this.isFollowed = false : this.isFollowed = true;
+    }
   }
 }
 </script>
