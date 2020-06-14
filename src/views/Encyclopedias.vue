@@ -3,7 +3,7 @@
 <!-- Encyclopedias.vue -->
   <div>
     <!-- 页面头部开始 -->
-    <my-header name='百科'></my-header>
+    <my-header name='百科' class="encytitle"></my-header>
     <!-- 页面头部结束 -->
     <div class="Ency_2">
       <!-- 页面上方图片 -->
@@ -17,11 +17,7 @@
                     <van-sidebar-item v-for="(item,index) in category"  :key="index" :title="item.ency_category_name" @click="ao"></van-sidebar-item>
             </van-sidebar>
           </div>  
-          <!-- aahahwdhalkw -->
-          <!-- 测试上传 -->
-          <!-- aahahwdhalkw -->
-          <!-- 的空大武当里awd 无间傀儡 -->
-          <!-- 大王卡来得及埃里克 -->
+          
           <!-- 面板区域开始 -->
           <div class="Ribaba">
             <!-- <van-panel   class="Ri" :id="item.ency_category_id" v-for="(item,index) in category" :key="index" style="display:none;" data-vp > -->
@@ -59,7 +55,7 @@
       </div>
     </div>
     <!-- 底部选项卡开始 -->
-    <!-- 封装 
+    <!-- 封装组件 
     <mt-tabbar v-model="selectedTab" fixed>
       <mt-tab-item id="home">
         <img src="../assets\images\encyImg/home_enabled.png" slot="icon" v-if="selectedTab == 'home'">
@@ -92,9 +88,9 @@
   </div>
 </template>
 <style>
-html,body{ 
+/* html,body{ 
     touch-action: pan-y;
-}
+} */
 </style>
 <style scoped>
 .index-title{
@@ -116,8 +112,18 @@ html,body{
 }
 .Ency_2{
   overflow: hidden;
-  margin-top: 0px;
+  margin-top: 35px;
   /* display: flex; */
+}
+.encytitle{
+  height: 35px;
+  width: 100%;
+  background-color: #fff;
+  margin-top: 0;
+  padding-top: 5px;
+  position: fixed;
+  top: 0;
+  z-index: 1001;
 }
 .shortcut{
   margin-left:5px;
@@ -128,7 +134,7 @@ html,body{
   position: fixed;
   width: 100%;
   /* border: 3px solid red; */
-  border-radius: 10px;
+  /* border-radius: 10px; */
   display: flex;
   /* justify-content: center; */
   overflow: hidden;
@@ -190,6 +196,7 @@ html,body{
   font-size: 13px;
   background-color: #fff;
   line-height: 30px;
+  margin: 0;
   padding-left: 5px;
   z-index: 100;
 }
@@ -263,6 +270,7 @@ export default {
       busy:false,
       //存储服务器返回的总页数
       pagecount:'',
+      
       // ET:[
       //       {Tid:"1",Tname:"关注"},
       //       {Tid:"2",Tname:"推荐"},
