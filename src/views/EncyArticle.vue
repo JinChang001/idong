@@ -1,7 +1,7 @@
 <template>
     <div class="encyArticle">
         <!-- 顶部导航开始 -->
-        <mt-header title="百科详情页" fixed>
+        <mt-header title="百科详情页" class="ency-article" fixed>
             <router-link to="/encyclopedias" slot="left">
                 <mt-button icon="back"></mt-button>
             </router-link>
@@ -66,6 +66,10 @@
     </div>
 </template>
 <style scoped>
+.ency-article{
+    color: #000;
+    background-color: #fff;
+}
 .main{
     margin-top: 40px;
     margin-bottom: 60px;
