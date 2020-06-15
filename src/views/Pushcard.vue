@@ -11,7 +11,8 @@
   background: #000 !important;
 }
 .btn-send {
-  margin: 22px;
+  background-color: #ccc;
+  margin-bottom: 5px;
   display: block;
   width: 100%;
 }
@@ -26,10 +27,10 @@
 <template>
   <div id="dynamic_create">
     <my-header name="发布动态"></my-header>
-    <mt-field  v-model="dynamicContent" placeholder="这一刻的想法..." type="textarea" rows="4" ></mt-field>
+    <mt-field  v-model="dynamicContent" placeholder="这一刻的想法..." type="textarea" rows="5" ></mt-field>
     <uploader @getFiles='getImageList' @removeFiles='removeImage'></uploader>
     <div class="btn-wrapper">
-        <mt-button class='btn-send' size="large" type="primary" @click="send">发布</mt-button>
+        <mt-button class='btn-send' size="large" @click="send">发布</mt-button>
     </div>
   
   </div>
@@ -107,7 +108,7 @@ export default {
 
     //发布事件
     send() {
-      Toast("提交信息在控制台里～图片地址是压缩后的base64地址");
+      this.$toast("提交信息在控制台里～图片地址是压缩后的base64地址");
       console.log("内容" + this.dynamicContent);
       console.log(this.imgList);
 

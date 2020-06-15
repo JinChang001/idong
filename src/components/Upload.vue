@@ -16,7 +16,7 @@
     }
     .file-remove {
       position: absolute;
-      font-size: 12px;
+      font-size: 25px;
       right: 5px;
       top: 1px;
       width: 14px;
