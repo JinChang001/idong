@@ -126,8 +126,9 @@
                   <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
                 </div>
                 <ul class="user-icons">
-                  <li>
-                    <img src="../assets/images/index/icons/like.png" alt="">
+                  <li @click="onLike">
+                    <img src="../assets/images/index/icons/like.png" alt="" v-if="isLiked == 0">
+                    <img src="../assets/images/index/icons/liked.png" alt="" v-else-if="isLiked == 1">
                     <span>123</span>
                   </li>
                   <li @click="pagePath('pdetails',queryData)">
@@ -162,8 +163,9 @@ export default {
       queryData: {
         user_id: 1001
       },
-      isCollected: false,
-      isFollowed: false
+      isCollected: false, 
+      isFollowed: false,
+      isLiked:false
     }
   },
   created() {
@@ -175,6 +177,9 @@ export default {
     },
     onCollect(){
       this.isCollected == true ? this.isCollected = false : this.isCollected = true;
+    },
+    onLike(){
+      this.isLiked == true ? this.isLiked = false : this.isLiked = true;
     },
     onFollowed(){
       this.isFollowed == true ? this.isFollowed = false : this.isFollowed = true;
