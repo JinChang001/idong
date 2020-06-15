@@ -1,120 +1,142 @@
+<style lang="less" scoped>
+//发布动态
+#dynamic_create {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+}
+#dynamic_create canvas {
+  background: #000 !important;
+}
+.btn-send {
+  margin: 22px;
+  display: block;
+  width: 100%;
+}
+.btn-wrapper {
+  display: flex;
+}
+#dynamic_create .mint-cell {
+  border: none;
+}
+</style>
+
 <template>
-  <div class="abc">
-    <!-- 顶部开始 -->
-    <my-header name='发布动态'></my-header>
-
-    <!-- 顶部结束 -->
-    <!-- 按钮组 -->
-    <div>
-      <ul class="mian">
-        <li v-for="(v,i) of thin" :key="i" class="mian1">
-          <div>
-            <img :src="v.p">
-          </div>
-          
-        <p>{{v.w}}</p>
-        </li>
-      </ul>
+  <div id="dynamic_create">
+    <my-header name="发布动态"></my-header>
+    <mt-field  v-model="dynamicContent" placeholder="这一刻的想法..." type="textarea" rows="4" ></mt-field>
+    <uploader @getFiles='getImageList' @removeFiles='removeImage'></uploader>
+    <div class="btn-wrapper">
+        <mt-button class='btn-send' size="large" type="primary" @click="send">发布</mt-button>
     </div>
-  <!-- 底部的× -->
-  <div class="aa">
-     <router-link to="/">
-       <p>×</p>
-     </router-link>
-  </div>
-
   
   </div>
 </template>
 
 <script>
+import uploader from "../components/Upload";
+
 export default {
-    data(){
-      return{
-        thin:[
-          {w:"记饮食",
-          p:require('../assets/images/pushcard/yinshi.png')
-          },
-          {w:"记运动",
-          p:require('../assets/images/pushcard/yundong2.png')
-          },
-          {w:"记体重",
-          p:require('../assets/images/pushcard/tizhong.png')
-          },
-          {w:"发动态",
-          p:require('../assets/images/pushcard/iconset0239.png')
-          },
-          {w:"记围度",
-          p:require('../assets/images/pushcard/pichi.png')
-          },
-          {w:"记经期",
-          p:require('../assets/images/pushcard/hua.png')
-          },
-          {w:"每日打卡",
-          p:require('../assets/images/pushcard/rili.png')
-          }     
-        ]
-      };
+  name: "DynamicCreate",
+  data() {
+    return {
+      dynamicContent: "", //动态内容
+      imgList: [], //已上传的图片集合
+      FilecodeList: [],
+      isSubmit: false
+    };
+  },
+  methods: {
+    getImageList(files) {
+      this.$nextTick(() => {
+        for (let i = 0, len = files.length; i < len; i++) {
+          this.imgList.push(files[i].src.split("base64,")[1]);
+          //上传图片
+          //   this._getFileCode({
+          //     Base64Str: files[i].src.split("base64,")[1],
+          //     AttachmentType: this.$enums.AttachmentType.Activity
+          //   });
+        }
+      });
     },
-  
+    //删除图片
+    removeImage(index) {
+      this.imgList.splice(index, 1);
+    },
+
+    //上传图片获取fileCode (目前该方法没调用，供参考)
+    _getFileCode(obj) {
+      // Indicator.open(this.lang.dynamic_publishing);
+      this.$http
+        .post(this.$profileApi.Shared_UploadImage, obj)
+        .then(data => {
+          if (data.Rstatus) {
+            this.FilecodeList.push(data.Rdata);
+          } else {
+            // Toast(this.lang.dynamic_upload_fail);
+          }
+        })
+        .catch(err => {
+          //   Toast(this.lang.dynamic.dynamic_net_error);
+        });
+    },
+
+    //创建动态 (发布动态的请求)
+    createDynamic(arr) {
+      this.isSubmit = true;
+      this.$http
+        .post(this.$profileApi.Dynamic_CreateDynamic, {
+          Subject: this.dynamicContent,
+          Files: arr
+        })
+        .then(data => {
+          this.isSubmit = false;
+          if (data.Rstatus) {
+            // Toast(this.lang.dynamic_publish_ok);
+            this.$router.back();
+          } else {
+            // Toast(this.lang.dynamic_publish_fail);
+          }
+        })
+        .catch(err => {
+          //   Toast(this.lang.dynamic_net_error);
+        });
+    },
+
+    //发布事件
+    send() {
+      Toast("提交信息在控制台里～图片地址是压缩后的base64地址");
+      console.log("内容" + this.dynamicContent);
+      console.log(this.imgList);
+
+      //   if (this.dynamicContent.trim() == "" && this.imgList.length === 0) {
+      //     // Toast(this.lang.dynamic_content_no_null);
+      //     return;
+      //   }
+      //   //当图片还没上传成功
+      //   let self = this;
+      //   var timer = setInterval(function() {
+      //     if (
+      //       self.FilecodeList &&
+      //       self.imgList &&
+      //       self.FilecodeList.length < self.imgList.length
+      //     ) {
+      //       // Indicator.open(self.lang.dynamic_uploading)
+      //       self.isSubmit = true;
+      //     } else {
+      //       clearInterval(timer);
+      //       // Indicator.close();
+      //       self.createDynamic(self.FilecodeList);
+      //     }
+      //   }, 200);
+    }
+  },
+  components: {
+    uploader
+  }
 };
 </script>
 
-<style scoped>
-*{
-  padding: 0;
-  margin: 0;
-}
- ul li{
-   width:90px ;
-   height: 90px;
-   list-style: none;
-   /* border-radius:50% ; */
-   /* background: rgb(247, 194, 212); */
 
- }
- ul li div{
-   width:70px ;
-   height: 70px;
-   border-radius:50% ;
-   background: rgb(247, 194, 212);
-   overflow: hidden;
- }
- ul li img{
-   width: 45px;
-  margin: 12px auto 0;
-
-
-   
- }
-  ul li:first-child {
-   margin-right:15px ;
-   margin-bottom:10px ;
-
- }
- ul li+li {
-   margin-right:15px ;
-   margin-bottom:10px ;
- }
- .mian{
-   display: flex;
-  flex-wrap: wrap;
-  position: absolute;
-  bottom: 15%;
-
- }
- .mian1{
-   width:20%
-   
-  
- }
- .aa{
-    position: absolute;
-  bottom: 4%;
-  left: 176px;
- font-size: 40px;
- }
- a{
-    text-decoration: none;
- }
-</style>
