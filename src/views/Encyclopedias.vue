@@ -3,7 +3,7 @@
 <!-- Encyclopedias.vue -->
   <div>
     <!-- 页面头部开始 -->
-    <my-header name='百科'></my-header>
+      <my-header name='百科'></my-header>
     <!-- 页面头部结束 -->
     <div class="Ency_2">
       <!-- 页面上方图片 -->
@@ -44,7 +44,7 @@
                       <div>
                           <p class="linkTitle">{{article.article_title}}</p>
                           <p class="linkContent">82.3万人关注 · 2580条内容</p>
-                        
+                      
                       </div>
                       <mt-badge type="error" size="small" >热</mt-badge>
                       <img v-lazy="article.article_image" slot="icon" width="50" height="50" >

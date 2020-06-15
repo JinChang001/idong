@@ -54,7 +54,7 @@ export default {
       // console.log(this.list.filter(item => item.id == newVal))
       if(newVal != oldVal){
         this.$router.push({name: this.list.filter(item => item.id == newVal)[0].path});
-      }
+      } 
     }
   }
 }
