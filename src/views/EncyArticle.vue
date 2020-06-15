@@ -158,15 +158,33 @@ export default {
   },
   //在挂载完成后执行的业务代码
   mounted(){
-      //请求WEB服务器中以当前地址栏ID为条件的文章标题、正文及相关信息
-      var id = this.$route.params.id;
+    //请求WEB服务器中以当前地址栏ID为条件的文章标题、正文及相关信息
+    var id = this.$route.params.id;
+    var readC = ""
     //   console.log(id)
-      //发送AJAX请求
-      this.axios.get('/encyArticle?id=' + id).then((res)=>{
-        this.obj = res.data.encyArticle;
-        // this.obj.avatar = require('../assets/images/encyImg/' + this.obj.avatar);
-      });
+    //发送AJAX请求
+    this.axios.get('/encyArticle?id=' + id).then((res)=>{
+    this.obj = res.data.encyArticle;
+    // console.log(this.obj)
+    readC = this.obj.read_count
+    
+    // this.obj.avatar = require('../assets/images/encyImg/' + this.obj.avatar);
+    });
     //   console.log(this.obj)
+    
+    
+  },
+  updated(){
+    //   let timer=setTimeout(function(){
+    // var read_count=this.obj.read_count
+    var id = this.$route.params.id;
+        //发送AJAX请求
+    var readC = this.obj.read_count
+    readC++
+    this.axios.post('/setRead?read_count=' + readC + '&id=' + id).then((res)=>{
+       
+    });
+    // },3000);
   }
 }
 </script>
