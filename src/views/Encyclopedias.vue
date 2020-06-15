@@ -35,14 +35,15 @@
                         </div>
                       </a>
                   </div> -->
-                  <mt-cell  class="articleItem " is-link :to="`/EncyArticle/${article.article_id}`" v-for="(article,index) of articles" :key="index">
+                  <mt-cell  class="articleItem" is-link :to="`/EncyArticle/${article.article_id}`" v-for="(article,index) of articles" :key="index" >
                       
-                      <div>
+                      <div class="titleFont">
                           <p class="linkTitle">{{article.article_title}}</p>
-                          <p class="linkContent">82.3万人关注 · 2580条内容</p>
-                      
+                          <p class="linkContent">0人关注 · {{article.read_count}}次阅读</p>
+                        
                       </div>
-                      <mt-badge type="error" size="small" >热</mt-badge>
+                      <mt-badge type="error" size="small" v-if="article.read_count > 2000">热</mt-badge>
+                      <mt-badge type="primary" size="small" v-else>不热</mt-badge>
                       <img v-lazy="article.article_image" slot="icon" width="50" height="50" >
                   </mt-cell>
                 </div>
@@ -215,6 +216,11 @@
   padding:5px 0;
   /* margin:0 3px; */
   border-bottom:1px solid rgb(162, 163, 161);
+  position: relative;
+}
+.titleFont{
+  position: absolute;
+  left: 70px;
 }
 .articleItem-header{
   font-weight: 600;
@@ -270,6 +276,7 @@ export default {
       busy:false,
       //存储服务器返回的总页数
       pagecount:'',
+     
       
       // ET:[
       //       {Tid:"1",Tname:"关注"},
@@ -323,6 +330,7 @@ export default {
             this.busy = false;
         });
     },
+    
     loadData(){
       this.busy = true;
       //加载更多的数据,必须将页码及文章分类ID提交给服务器
@@ -368,6 +376,9 @@ export default {
     });
     //获取默认选项卡的第一页包含的文章信息
     this.loadData();
+    
+    
+    
   }
   
   
