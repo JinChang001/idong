@@ -141,6 +141,51 @@
                   </li>
                 </ul>
               </li>
+              <li>
+                <div class="user-info">
+                  <img src="../assets/images/index/avatar/b86fd6fe4ac391ef9640f708126be782.jpg" alt="">
+                  <span>靳昌</span>
+                  <div class="btn-follow" @click="onFollowed">
+                    <mt-button type="primary" size="small" v-if="isFollowed">关注</mt-button>
+                    <mt-button type="default" size="small" v-else>取消关注</mt-button>
+                  </div>
+                </div>
+                <div class="user-text" @click="pagePath('pdetails',queryData)">
+                  关于空腹跑🏃‍♀️
+                  这三个月的跑步我基本都是早上空腹跑，减脂效果对我来说真的很明显，和大家分享下小经验。😳
+                  空腹跑为什么减脂效果比较好，因为空腹时体内血糖含量较低，跑步动用的脂肪供能的比例增大，从而可以消耗更多的脂肪。所以减脂可以选择空腹跑。✅
+                  但是空腹跑并不是适合所有人
+                  ❎有低血糖的人不建议空腹跑
+                  ❎没有运动基础的也不建议空腹跑
+                  ❎上年纪的人不建议空腹跑哦
+                </div>
+                <div class="user-imgs" @click="pagePath('pdetails',queryData)">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
+                </div>
+                <ul class="user-icons">
+                  <li @click="onLike">
+                    <img src="../assets/images/index/icons/like.png" alt="" v-if="isLiked == 0">
+                    <img src="../assets/images/index/icons/liked.png" alt="" v-else-if="isLiked == 1">
+                    <span>123</span>
+                  </li>
+                  <li @click="pagePath('pdetails',queryData)">
+                    <img src="../assets/images/index/icons/review.png" alt="">
+                    <span>123</span>
+                  </li>
+                  <li @click="onCollect">
+                    <img id="collectImg" src="../assets/images/index/icons/collect.png" alt="" v-if="isCollected == 0">
+                    <img id="collectImg" src="../assets/images/index/icons/collected.png" alt="" v-else-if="isCollected == 1">
+                  </li>
+                </ul>
+              </li>
             </ul>
             <!-- 用户动态结束 -->
           </div>
