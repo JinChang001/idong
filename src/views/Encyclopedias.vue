@@ -19,7 +19,7 @@
           </div>  
           
           <!-- 面板区域开始 -->
-          <div class="Ribaba">
+          <div class="Ribaba" infinite-scroll-distance="10" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-immediate-check="true">
             <!-- <van-panel   class="Ri" :id="item.ency_category_id" v-for="(item,index) in category" :key="index" style="display:none;" data-vp > -->
             <p class="RiTitle">热门推荐</p>
               <!-- 面板文章信息开始 -->
@@ -43,7 +43,7 @@
                         
                       </div>
                       <mt-badge type="error" size="small" v-if="article.read_count > 2000">热</mt-badge>
-                      <mt-badge type="primary" size="small" v-else>不热</mt-badge>
+                      
                       <img v-lazy="article.article_image" slot="icon" width="50" height="50" >
                   </mt-cell>
                 </div>
@@ -221,6 +221,7 @@
 .titleFont{
   position: absolute;
   left: 70px;
+  top:15px;
 }
 .articleItem-header{
   font-weight: 600;
@@ -307,9 +308,11 @@ export default {
       // console.log(document.querySelectorAll("[data-vp]"))
       // console.log(e);
       this.articles =[];
-      var active=e+1
+      this.active=e+1;
+      this.page=1;
+      // console.log(this.active)
       this.busy = true;
-      this.axios.get('/getArticles?cid=' + active + '&page=' + this.page).then((res)=>{
+      this.axios.get('/getArticles?cid=' + this.active + '&page=' + this.page).then((res)=>{
             
             var data = res.data.articles;
             // console.log(data)
@@ -339,7 +342,6 @@ export default {
       //URL地址栏参数的结构是: 
       //URL地址?参数名称=值&参数名称=值
       this.axios.get('/getArticles?cid=' + this.active + '&page=' + this.page).then((res)=>{
-            
             var data = res.data.articles;
             // console.log(data)
             //将WEB服务器返回的总页数赋值给pagecount变量
@@ -360,7 +362,18 @@ export default {
         });
       // 
     },
-
+    
+    
+    loadMore(){
+      //向下滚动时触发的函数
+        this.page++;
+        // console.log(this.active)
+        if(this.page <= this.pagecount){
+          this.loadData();
+          // console.log("aa")
+        }
+        
+    }
 
   },
   mounted(){
@@ -376,11 +389,6 @@ export default {
     });
     //获取默认选项卡的第一页包含的文章信息
     this.loadData();
-    
-    
-    
   }
-  
-  
 }
 </script>
