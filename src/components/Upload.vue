@@ -138,7 +138,7 @@ input[type="file"] {
                   <div class="add">
                     <span>+</span>
                     <!-- accept="image/jpeg,image/png" capture="camera" -->
-                    <input type="file" @change="selectImgs()" multiple accept="image/*" ref="file">
+                    <input type="file" @change="selectImgs()" multiple accept="image/*" ref="file" name="file">
                   </div>
                 </section>
             </div>
@@ -208,7 +208,8 @@ export default {
     selectImgs() {
       let fileList = this.$refs.file.files;
       if (fileList.length > 9) {
-        alert(this.lang.dynamic_upload_tips);
+        // alert(this.lang.dynamic_upload_tips);
+        this.$toast('图片最多为9张~');
       }
       let tempList = []; //每次点击+号后选择的图片信息
       for (let i = 0, len = fileList.length; i < len; i++) {
@@ -220,13 +221,15 @@ export default {
         };
         //将图片文件转成Base64
         let reader = new FileReader();
+        // FileReader 对象允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 File 或 Blob 对象指定要读取的文件或数据。
         reader.onloadend = e => {
+          // FileReader.onloadend :处理loadend事件。该事件在读取操作结束时（要么成功，要么失败）触发。
           this.getBase64(e.target.result).then(url => {
             this.$set(fileItem, "src", url);
           });
         };
         if (fileItem.size > this.maxSize) {
-          Toast(this.lang.dynamic_over_size);
+          this.$toast(this.lang.dynamic_over_size);
         } else {
           reader.readAsDataURL(fileList[i]);
           tempList.push(fileItem);

@@ -95,52 +95,7 @@
             <div class="ydq-title">运动圈</div>
             <!-- 运动圈标题结束 -->
             <!-- 用户动态开始 -->
-            <ul class="moments-list">
-              <li>
-                <div class="user-info">
-                  <img src="../assets/images/index/avatar/b86fd6fe4ac391ef9640f708126be782.jpg" alt="">
-                  <span>靳昌</span>
-                  <div class="btn-follow" @click="onFollowed">
-                    <mt-button type="primary" size="small" v-if="isFollowed">关注</mt-button>
-                    <mt-button type="default" size="small" v-else>取消关注</mt-button>
-                  </div>
-                </div>
-                <div class="user-text" @click="pagePath('pdetails',queryData)">
-                  关于空腹跑🏃‍♀️
-                  这三个月的跑步我基本都是早上空腹跑，减脂效果对我来说真的很明显，和大家分享下小经验。😳
-                  空腹跑为什么减脂效果比较好，因为空腹时体内血糖含量较低，跑步动用的脂肪供能的比例增大，从而可以消耗更多的脂肪。所以减脂可以选择空腹跑。✅
-                  但是空腹跑并不是适合所有人
-                  ❎有低血糖的人不建议空腹跑
-                  ❎没有运动基础的也不建议空腹跑
-                  ❎上年纪的人不建议空腹跑哦
-                </div>
-                <div class="user-imgs" @click="pagePath('pdetails',queryData)">
-                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                  <img src="../assets/images/index/userNote/732a8d18b791a4265e338cb9d20f9c3df20d6a87_1241x932.jpg" alt="">
-                </div>
-                <ul class="user-icons">
-                  <li @click="onLike">
-                    <img src="../assets/images/index/icons/like.png" alt="" v-if="isLiked == 0">
-                    <img src="../assets/images/index/icons/liked.png" alt="" v-else-if="isLiked == 1">
-                    <span>123</span>
-                  </li>
-                  <li @click="pagePath('pdetails',queryData)">
-                    <img src="../assets/images/index/icons/review.png" alt="">
-                    <span>123</span>
-                  </li>
-                  <li @click="onCollect">
-                    <img id="collectImg" src="../assets/images/index/icons/collect.png" alt="" v-if="isCollected == 0">
-                    <img id="collectImg" src="../assets/images/index/icons/collected.png" alt="" v-else-if="isCollected == 1">
-                  </li>
-                </ul>
-              </li>
+            <ul class="moments-list" infinite-scroll-distance="3" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-immediate-check="true">
               <li>
                 <div class="user-info">
                   <img src="../assets/images/index/avatar/b86fd6fe4ac391ef9640f708126be782.jpg" alt="">
@@ -208,13 +163,19 @@ export default {
       queryData: {
         user_id: 1001
       },
+      user_id:1001,
+      // 用户是否收藏
       isCollected: false, 
+      // 用户是否关注
       isFollowed: false,
-      isLiked:false
+      // 用户是否点赞
+      isLiked:false,
+      // 存储当前的页码
+      page:1,
+      // 当服务器在处理请求期间，即使再次滚动范围内
+      // 不再触发请求
+      busy:false
     }
-  },
-  created() {
-    console.log(this.$route)
   },
   methods:{
     pagePath(url, data, type){
@@ -228,7 +189,36 @@ export default {
     },
     onFollowed(){
       this.isFollowed == true ? this.isFollowed = false : this.isFollowed = true;
+    },
+     // 加载数据的函数(会被mounted/切换顶部选项卡及向下滚动时调用)
+    loadData(){
+      this.busy = true;
+      // 加载更多数据,必须将页码及文章分类ID提交给服务器
+      // 文章ID用于决定服务器返回哪一种类型的文章
+      // 页码参数用于决定返回该类文章下的那一部分的数据
+      this.axios.get(`/getPosts?page=${this.page}`).then((res)=>{
+        // var data = res.data.articles;
+        // data.forEach(item => {
+        //   if( item.image !=null ){
+        //     item.image = require(`../assets/images/articles/${item.image}`);
+        //   }
+        //   this.articles.push(item);
+        // });
+        // this.busy = false;
+      });
+    },
+    // 向下滚动时触发的函数
+    loadMore(){
+      // 当前页码进行递增操作
+      this.page++;
+      // 如果当前页码小于当前分页总页数时
+      // 向WEB服务器发送AJAX请求，以获取更多的数据
+      this.loadData();
     }
-  }
+  },
+  //在挂载完成后执行的业务代码
+  mounted(){
+    
+  },
 }
 </script>
