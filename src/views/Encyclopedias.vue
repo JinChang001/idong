@@ -14,7 +14,9 @@
           <!-- 侧边选项卡开始 -->
           <div class="Lebaba">
             <van-sidebar  v-model="encyActive" class="Le">
-                    <van-sidebar-item v-for="(item,index) in category"  :key="index" :title="item.ency_category_name" @click="ao"></van-sidebar-item>
+              <!-- <van-sidebar-item title="收藏" @click="bo"></van-sidebar-item>
+              <van-sidebar-item title="推荐" @click="bo"></van-sidebar-item> -->
+              <van-sidebar-item v-for="(item,index) in category"  :key="index" :title="item.ency_category_name" @click="ao"></van-sidebar-item>
             </van-sidebar>
           </div>  
           
@@ -39,7 +41,7 @@
                       
                       <div class="titleFont">
                           <p class="linkTitle">{{article.article_title}}</p>
-                          <p class="linkContent">0人关注 · {{article.read_count}}次阅读</p>
+                          <p class="linkContent">{{article.coll}}人收藏 · {{article.read_count}}次阅读</p>
                         
                       </div>
                       <mt-badge type="error" size="small" v-if="article.read_count > 2000">热</mt-badge>
@@ -277,6 +279,7 @@ export default {
       busy:false,
       //存储服务器返回的总页数
       pagecount:'',
+      testaa:20,
      
       
       // ET:[
@@ -298,6 +301,11 @@ export default {
   
   methods:{
     //左侧选项卡不能关联面板，使用点击事件更换面板显示
+    // 从article_collect获取
+    bo(e){
+      console.log(e)
+    },
+    //从ency_article获取
     ao(e){
       // this.dp="display:none;"
       // var xxs=document.querySelectorAll("[data-vp]")
@@ -306,7 +314,7 @@ export default {
       // }
       // document.getElementById(e+1).style=""
       // console.log(document.querySelectorAll("[data-vp]"))
-      // console.log(e);
+      console.log(e);
       this.articles =[];
       this.active=e+1;
       this.page=1;
@@ -359,7 +367,10 @@ export default {
             });
             // 
             this.busy = false;
+            
         });
+        var az= this.articles
+        console.log(az)
       // 
     },
     
