@@ -19,6 +19,16 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "pushcard" */ '../views/Pdetails.vue')
   },
   {
+    path:'/login',
+    name:'login',
+    component: () => import(/* webpackChunkName: "pushcard" */ '../views/Login.vue')
+  },
+  {
+    path:'/register',
+    name:'register',
+    component: () => import(/* webpackChunkName: "pushcard" */ '../views/Register.vue')
+  },
+  {
     path:'/pushcard',
     name:'pushcard',
     component: () => import(/* webpackChunkName: "pushcard" */ '../views/Pushcard.vue')

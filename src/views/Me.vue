@@ -6,11 +6,31 @@
     </div>
     <!-- 用户头像结束 -->
     <!-- 登录/注册开始 -->
-    <div class="lagin">
-      <mt-button type="primary" class="button">登录</mt-button> 
-      <mt-button type="primary" class="button">注册</mt-button>
+    <div class="lagin"  v-if="$store.state.author.isLogined!=true">
+      <router-link to="/login">
+        <mt-button type="primary" class="button">登录</mt-button> 
+      </router-link>
+      <router-link to="/register">
+        <mt-button type="primary" class="button">注册</mt-button>
+      </router-link>
     </div>
     <!-- 登录，注册结束 -->
+        <!-- 登录后关联的用户相关信息开始 -->
+    <ul class="user" v-else>
+      <li>
+        <p>999999</p>
+        <p>动态</p>
+      </li>
+      <li>
+        <p>0</p>
+        <p>关注</p>
+      </li>
+      <li>
+        <p>800000</p>
+        <p>粉丝</p>
+      </li>
+    </ul>
+    <!-- 登录后关联的用户相关信息结束 -->
     <!-- 横向功能区域开始 -->
     <ul class="shop">
       <router-link to="">
@@ -55,9 +75,10 @@
   </div>
 </template>
 <style  scoped>
-  *{margin:0;padding:0}
   .me{
     position:relative;
+    width:100%;
+    height:100%;
   }
   /* 用户头像 */
   .me .me-img>img{
@@ -81,6 +102,20 @@
     border-radius:10px;
     margin-right:6px;
   }
+  /* 登录后关联用户相关信息样式开始 */
+  .me .user{
+    display: flex;
+    position: absolute;
+    top:1.6rem;
+    left:0.6rem;
+    text-align: center;
+  }
+  .me .user>li{
+    margin:0 20px;
+    font-size: 13px;
+    font-weight:400;
+  }
+  /* 登录后关联用户相关信息样式结束 */
   /* 横向功能区域样式 */
   .shop{
     position: relative;
